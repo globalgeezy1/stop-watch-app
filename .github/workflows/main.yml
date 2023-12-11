@@ -14,4 +14,31 @@ jobs:
         uses: actions/checkout@v3
         
       - name: Run Integration Test
-        run: cat newfile
+        run: cat index.html
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone
+        uses: actions/checkout@v3
+
+      - name: Build app
+        run: echo "Building"
+    
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone
+      uses: actions/checkout@v3
+      
+    - name: Deploy to Ec2 Instance
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.KEY }}
+        script: |
+           cd stop-watch-app/
+           git pull origin
+           cd
+           sudo cp -r stop-watch-app/* /var/www/html
