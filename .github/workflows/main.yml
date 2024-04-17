@@ -23,8 +23,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
-      - name: Echo Testing
-        run: echo "TESTING"
+      - name: Make sure index.html exists
+        run: cat index.html
         
   deploy:
     runs-on: ubuntu-latest
