@@ -1,4 +1,4 @@
- name: Static-Site-Workflow/Pipeline
+name: Static-Site-Workflow/Pipeline
 
 on:
   push:
