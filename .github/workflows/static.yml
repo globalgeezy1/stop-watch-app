@@ -37,8 +37,4 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.PRIVATE_KEY }}
         script: |
-          cd Static-Site
-          git pull origin
-          cd
-          sudo cp -r Static-Site/* /var/www/html
-          sudo systemctl restart nginx
+          sh script.sh
